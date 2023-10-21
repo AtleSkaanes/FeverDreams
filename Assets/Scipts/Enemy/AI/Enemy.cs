@@ -4,23 +4,25 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavMeshTest : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
+    [SerializeField] Transform target;
+    
     [Header("Speed")]
     [SerializeField] float huntingSpeed;
     [SerializeField] float wanderSpeed;
     [SerializeField] float huntingAcc;
     [SerializeField] float wanderAcc;
-    
-    [Space(15)]
-    [Header("Misc.")]
-    [SerializeField] float viewRange;
-    [SerializeField] float wanderDistance;
-    [SerializeField] Transform target;
 
+    [Header("Wandering")]
+    [SerializeField] float wanderMaxTurnAngle;
+    [SerializeField] float wanderMaxRange;
+    [SerializeField] float wanderMinRange;
+    [SerializeField] float viewRange;
 
     NavMeshQueryFilter filter;
     NavMeshAgent agent;
+    bool attacking;
 
     // Start is called before the first frame update
     void Awake()
@@ -35,28 +37,48 @@ public class NavMeshTest : MonoBehaviour
         StartCoroutine(ScanForPrey());
     }
 
-    private void Update()
+    void Update()
     {
-        if (Vector3.Distance(agent.destination, transform.position) < 2f)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            print("Hello");
-
             agent.speed = wanderSpeed;
             agent.acceleration = wanderAcc;
+            if (!FindRandomPath(0f, 50))
+                FindRandomPath(180f, 50);
+        }
+    }
 
-            Vector3 randomDirection = Random.insideUnitSphere * wanderDistance;
-            randomDirection += transform.position;
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+            attacking = true;
+    }
 
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomDirection, out hit, wanderDistance, filter))
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+            attacking = false;
+    }
+
+    bool FindRandomPath(float angleOffset, int tries)
+    {
+        NavMeshHit hit;
+        for (int i = 0; i < tries; i++)
+        {
+            float randomAngle = Random.Range(-wanderMaxTurnAngle, wanderMaxTurnAngle);
+            float randomDistance = Random.Range(wanderMinRange, wanderMaxRange);
+            Vector3 randomDirection = Quaternion.AngleAxis(randomAngle + angleOffset, Vector3.up) * (transform.forward * randomDistance);
+
+            if (NavMesh.SamplePosition(transform.position + randomDirection, out hit, agent.height * 2f, filter))
             {
                 agent.SetDestination(hit.position);
-                Debug.Log($"Set position. Distance is : {Vector3.Distance(agent.destination, transform.position)}");
+                return true;
             }
         }
 
-        print($"{agent.destination}");
+        return false;
     }
+
 
     IEnumerator ScanForPrey()
     {

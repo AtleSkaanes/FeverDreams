@@ -258,7 +258,7 @@ GameObject:
   m_Layer: 0
   m_Name: Target
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -270,7 +270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156776679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3, y: 1, z: -5}
+  m_LocalPosition: {x: 97.7, y: 19, z: -7.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -685,13 +685,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a68aa8d6bfecb47901404db8c0fb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 156776680}
   huntingSpeed: 15
   wanderSpeed: 5
   huntingAcc: 18
   wanderAcc: 6
+  wanderMaxTurnAngle: 30
+  wanderMaxRange: 25
+  wanderMinRange: 5
   viewRange: 25
-  wanderDistance: 20
-  target: {fileID: 156776680}
 --- !u!1 &719267487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1105,7 @@ GameObject:
   - component: {fileID: 1518859454}
   - component: {fileID: 1518859453}
   - component: {fileID: 1518859457}
+  - component: {fileID: 1518859458}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -1227,6 +1230,25 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e83f83200cb1eee4885a177795e6e3b7, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &1518859458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518859452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2021498565
 GameObject:
   m_ObjectHideFlags: 0
