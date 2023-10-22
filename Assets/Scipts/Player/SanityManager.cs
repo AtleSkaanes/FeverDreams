@@ -16,20 +16,28 @@ public class SanityManager : Singleton<SanityManager>
 
     public UnityAction<SanityLevel> OnSanityChange;
 
-    public float currentSanity { private set; get; }
+    /// <summary>
+    /// Get the current sanity loss in percent | 
+    /// <returns> Max sanity: 0 | Min sanity: 1</returns>
+    /// </summary>
+    public float SanityLoss { get 
+        {
+            return (CurrentSanity * -1 + maxSanity) / maxSanity;
+        }}
+    public float CurrentSanity { private set; get; }
     SanityLevel currentSanityLevel;
 
     void Start()
     {
-        currentSanity = maxSanity;
+        CurrentSanity = maxSanity;
         currentSanityLevel = SanityLevel.Sane;
     }
 
     void Update()
     {
-        currentSanity -= sanityDropRate * Time.deltaTime;
+        CurrentSanity -= sanityDropRate * Time.deltaTime;
 
-        if (currentSanity < ((float)currentSanityLevel - 1) * sanityLevelIntervalSize)
+        if (CurrentSanity < ((float)currentSanityLevel - 1) * sanityLevelIntervalSize)
         {
             currentSanityLevel -= 1;
             OnSanityChange?.Invoke(currentSanityLevel);
@@ -38,7 +46,7 @@ public class SanityManager : Singleton<SanityManager>
 
     public void AttackSanity(float damage)
     {
-        currentSanity -= damage;
+        CurrentSanity -= damage;
     }
 }
 
