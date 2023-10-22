@@ -5,7 +5,7 @@ using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Sanity : MonoBehaviour
+public class SanityManager : Singleton<SanityManager>
 {
     [Header("Settings")]
     [SerializeField] float maxSanity;
@@ -16,7 +16,7 @@ public class Sanity : MonoBehaviour
 
     public UnityAction<SanityLevel> OnSanityChange;
 
-    float currentSanity;
+    public float currentSanity { private set; get; }
     SanityLevel currentSanityLevel;
 
     void Start()
