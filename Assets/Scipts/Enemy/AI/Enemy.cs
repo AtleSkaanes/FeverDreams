@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,19 +11,23 @@ public class Enemy : MonoBehaviour
     
     [Header("Speed")]
     [SerializeField] float huntingSpeed;
-    [SerializeField] float wanderSpeed;
     [SerializeField] float huntingAcc;
+    [SerializeField] float wanderSpeed;
     [SerializeField] float wanderAcc;
 
     [Header("Wandering")]
     [SerializeField] float wanderMaxTurnAngle;
     [SerializeField] float wanderMaxRange;
     [SerializeField] float wanderMinRange;
-    [SerializeField] float viewRange;
 
+    [Header("Scouting")]
+    [SerializeField] float viewRange;
+    [SerializeField] float viewAngle;
+    [SerializeField] float hearingRange;
+
+    EnemyState state;
     NavMeshQueryFilter filter;
     NavMeshAgent agent;
-    bool attacking;
 
     // Start is called before the first frame update
     void Awake()
@@ -34,12 +39,30 @@ public class Enemy : MonoBehaviour
     {
         filter.agentTypeID = agent.agentTypeID;
         filter.areaMask = NavMesh.AllAreas;
-        StartCoroutine(ScanForPrey());
+
+        GameManager.Instance.OnNoise += ListenForNoise;
     }
 
     void Update()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (state == EnemyState.Attacking)
+        {
+            // ATTAAACKK!!!
+            return;
+        }
+
+        if (TryHuntTarget())
+            state = EnemyState.Chasing;
+
+        else if (agent.remainingDistance <= agent.stoppingDistance)
+            state = EnemyState.FinishedRoute;
+
+        else
+            state = EnemyState.Scouting;
+
+
+        // Enemy is not done hunting or walking to next random point
+        if (state == EnemyState.FinishedRoute)
         {
             agent.speed = wanderSpeed;
             agent.acceleration = wanderAcc;
@@ -48,16 +71,51 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        // Draw FOV
+        for (int i = -1; i < 2; i++)
+        {
+            Vector3 lineDir = Quaternion.AngleAxis(viewAngle * i, Vector3.up) * transform.forward;
+            Vector3 endPos = transform.position + lineDir * viewRange;
+
+            Gizmos.DrawLine(transform.position, endPos);
+        }
+
+        // Draw hearing Range
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(transform.position, transform.up, hearingRange, 3);
+    }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
-            attacking = true;
+        if (collision.collider.CompareTag("Player")) { }
+            state = EnemyState.Attacking;
     }
 
     private void OnCollisionExit(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
-            attacking = false;
+            state = EnemyState.FinishedRoute;
+    }
+
+    void ListenForNoise(Vector3 position)
+    {
+        if (state > EnemyState.Scouting)
+            return;
+
+        float distance = (position - transform.position).magnitude;
+        if (distance > hearingRange)
+            return;
+
+        agent.SetDestination(position);
+        state = EnemyState.Chasing;
+    }
+
+    void UpdateState()
+    {
+        
     }
 
     bool FindRandomPath(float angleOffset, int tries)
@@ -79,29 +137,47 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
-
-    IEnumerator ScanForPrey()
+    bool TryHuntTarget()
     {
+        // Angle between 2 vectors:
+        //                a ● b
+        // angle = ACos( ─────── )
+        //               |a|*|b|
+
+        Vector3 targetDir = (target.position - transform.position).normalized;
+        float dotProduct = Vector3.Dot(transform.forward, targetDir);
+
+        // Due to floating point precision
+        dotProduct = Mathf.Clamp(dotProduct, -1, 1);
+
+        float angle = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;
+        if (angle > viewAngle)
+            return false;
+
+
         RaycastHit hit;
-
-        while (true)
+        // Keep updating destination while in view
+        if (Physics.Raycast(transform.position, target.position - transform.position, out hit, viewRange))
         {
-            // Keep updating destination while in view
-            if (Physics.Raycast(transform.position, target.position - transform.position, out hit, viewRange))
-            {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    agent.speed = huntingSpeed;
-                    agent.acceleration = huntingAcc;
+            if (!hit.collider.CompareTag("Player"))
+                return false;
 
-                    agent.SetDestination(hit.point);
-                    yield return new WaitForFixedUpdate();
-                    continue;
-                }
-            }
+            state = EnemyState.Chasing;
+            agent.speed = huntingSpeed;
+            agent.acceleration = huntingAcc;
 
-            // Longer update times when out of view
-            yield return new WaitForSeconds(1);
+            agent.SetDestination(hit.point);
+            return true;
         }
+
+        return false;
     }
+}
+
+enum EnemyState
+{
+    FinishedRoute,
+    Scouting,
+    Chasing,
+    Attacking
 }
