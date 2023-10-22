@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,16 +9,15 @@ public class Sanity : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] float maxSanity;
-    [Description("Sanity loss in units pr. second")]
+    [Tooltip("Sanity loss in units pr. second")]
     [SerializeField] float sanityDropRate;
-    [Description("How many sanity units between each stage")]
+    [Tooltip("How many sanity units between each stage")]
     [SerializeField] float sanityLevelIntervalSize;
 
     public UnityAction<SanityLevel> OnSanityChange;
 
     float currentSanity;
     SanityLevel currentSanityLevel;
-
 
     void Start()
     {
@@ -34,6 +34,11 @@ public class Sanity : MonoBehaviour
             currentSanityLevel -= 1;
             OnSanityChange?.Invoke(currentSanityLevel);
         }
+    }
+
+    public void AttackSanity(float damage)
+    {
+        currentSanity -= damage;
     }
 }
 
