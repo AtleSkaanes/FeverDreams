@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+<<<<<<< HEAD
 using UnityEngine.Rendering.Universal;
 
 public class SanityEffect : MonoBehaviour
@@ -38,10 +39,17 @@ public class SanityEffect : MonoBehaviour
     FilmGrain filmGrain;
     Vignette vignette;
     LensDistortion lensDistortion;
+=======
+
+public class SanityEffect : MonoBehaviour
+{
+    [SerializeField] VolumeProfile postProcessingSettings;
+>>>>>>> 974bd6d (Added a 'Sanity Effect' script and changed name of Sanity script to SanityManager)
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         volume = GetComponent<Volume>();
         volume.profile.TryGet(out colorAdjustments);
         volume.profile.TryGet(out bloom);
@@ -49,11 +57,15 @@ public class SanityEffect : MonoBehaviour
         volume.profile.TryGet(out filmGrain);
         volume.profile.TryGet(out vignette);
         volume.profile.TryGet(out lensDistortion);
+=======
+        
+>>>>>>> 974bd6d (Added a 'Sanity Effect' script and changed name of Sanity script to SanityManager)
     }
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         float sanityLoss = SanityManager.Instance.SanityLoss;
         colorAdjustments.postExposure.value = Mathf.Lerp(colExposureMin, colExposureMax, sanityLoss);
         colorAdjustments.contrast.value = Mathf.Lerp(contrastMin, contrastMax, sanityLoss);
@@ -62,5 +74,8 @@ public class SanityEffect : MonoBehaviour
         filmGrain.intensity.value = Mathf.Lerp(filmGrainMin, filmGrainMax, sanityLoss);
         vignette.intensity.value = Mathf.Lerp(vignetteMin, vignetteMax, sanityLoss);
         lensDistortion.intensity.value = Mathf.Lerp(lensDistortionMin, lensDistortionMax, sanityLoss);
+=======
+        
+>>>>>>> 974bd6d (Added a 'Sanity Effect' script and changed name of Sanity script to SanityManager)
     }
 }

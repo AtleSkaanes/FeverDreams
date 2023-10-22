@@ -38,6 +38,9 @@ MonoBehaviour:
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
   active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 9
   intensity:
     m_OverrideState: 1
     m_Value: 0.25

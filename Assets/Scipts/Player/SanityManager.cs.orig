@@ -16,6 +16,7 @@ public class SanityManager : Singleton<SanityManager>
 
     public UnityAction<SanityLevel> OnSanityChange;
 
+<<<<<<< HEAD
     /// <summary>
     /// Get the current sanity loss in percent | 
     /// <returns> Max sanity: 0 | Min sanity: 1</returns>
@@ -23,10 +24,14 @@ public class SanityManager : Singleton<SanityManager>
     public float SanityLoss => (CurrentSanity * -1 + maxSanity) / maxSanity;
 
     public float CurrentSanity { private set; get; }
+=======
+    public float currentSanity { private set; get; }
+>>>>>>> 974bd6d (Added a 'Sanity Effect' script and changed name of Sanity script to SanityManager)
     SanityLevel currentSanityLevel;
 
     void Start()
     {
+<<<<<<< HEAD
         CurrentSanity = maxSanity;
         currentSanityLevel = SanityLevel.Sane;
         StartCoroutine(LateStart(0.2f));
@@ -39,28 +44,42 @@ public class SanityManager : Singleton<SanityManager>
         yield return new WaitForSeconds(seconds);
 
         OnSanityChange?.Invoke(currentSanityLevel);
+=======
+        currentSanity = maxSanity;
+        currentSanityLevel = SanityLevel.Sane;
+>>>>>>> 974bd6d (Added a 'Sanity Effect' script and changed name of Sanity script to SanityManager)
     }
 
     void Update()
     {
+<<<<<<< HEAD
         CurrentSanity -= sanityDropRate * Time.deltaTime;
 
         // Sanity lower than level below
         if (CurrentSanity <= ((int)currentSanityLevel - 1) * sanityLevelIntervalSize)
+=======
+        currentSanity -= sanityDropRate * Time.deltaTime;
+
+        if (currentSanity < ((float)currentSanityLevel - 1) * sanityLevelIntervalSize)
+>>>>>>> 974bd6d (Added a 'Sanity Effect' script and changed name of Sanity script to SanityManager)
         {
             currentSanityLevel -= 1;
             OnSanityChange?.Invoke(currentSanityLevel);
         }
+<<<<<<< HEAD
         // Sanity higher than level above
         else if (CurrentSanity >= ((int)currentSanityLevel + 1) * sanityLevelIntervalSize)
         {
             currentSanityLevel += 1;
             OnSanityChange?.Invoke(currentSanityLevel);
         }
+=======
+>>>>>>> 974bd6d (Added a 'Sanity Effect' script and changed name of Sanity script to SanityManager)
     }
 
     public void AttackSanity(float damage)
     {
+<<<<<<< HEAD
         CurrentSanity -= damage;
         CurrentSanity = Mathf.Max(CurrentSanity, 0);
     }
@@ -69,6 +88,9 @@ public class SanityManager : Singleton<SanityManager>
     {
         CurrentSanity += healing;
         CurrentSanity = Mathf.Min(CurrentSanity, maxSanity);
+=======
+        currentSanity -= damage;
+>>>>>>> 974bd6d (Added a 'Sanity Effect' script and changed name of Sanity script to SanityManager)
     }
 }
 
