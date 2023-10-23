@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4078829736364078335}
   - component: {fileID: 510949741558385530}
+  - component: {fileID: 2410287005263147058}
   - component: {fileID: 7605714332549056967}
   - component: {fileID: 8407346377533082564}
   - component: {fileID: 3489186463472314760}
@@ -58,6 +59,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8, y: 2, z: 0.8}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!143 &2410287005263147058
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246426548953288516}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &7605714332549056967
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a886ce9872f0b4b8b72a88b4d0520f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovemntSpeed: 10
+  playerMovemntSpeed: 5
 --- !u!114 &3489186463472314760
 MonoBehaviour:
   m_ObjectHideFlags: 0
