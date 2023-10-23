@@ -12,6 +12,7 @@ public class SanityClutter : MonoBehaviour
     [Tooltip("Controls wethere the object should appear below or above the sanity level\nNote: The object always appears at the specified level")]
     [SerializeField] bool appearBelow;
 
+<<<<<<< HEAD
     Renderer meshRenderer;
     Collider meshCollider;
 
@@ -24,6 +25,16 @@ public class SanityClutter : MonoBehaviour
     {
         SanityManager.Instance.OnSanityChange += UpdateVisibility;
         meshRenderer = GetComponent<Renderer>();
+=======
+    MeshRenderer meshRenderer;
+    Collider meshCollider;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        SanityManager.Instance.OnSanityChange += UpdateVisibility;
+        meshRenderer = GetComponent<MeshRenderer>();
+>>>>>>> d3ba1b7 (Added a SanityClutter script to enable and disable object based on sanity)
         meshCollider = GetComponent<Collider>();
     }
 

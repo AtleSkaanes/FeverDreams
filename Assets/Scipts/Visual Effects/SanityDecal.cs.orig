@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,6 @@ using UnityEngine.Rendering.Universal;
 public class SanityDecal : MonoBehaviour
 {
     [Header("Visibility")]
-<<<<<<< HEAD
     [Tooltip("Controls the sanity level for the decal to appear")]
     [SerializeField] SanityLevel sanityLevel;
     [Tooltip("Controls wethere the decal should appear below or above the sanity level\nNote: The decal always appears at the specified level")]
@@ -18,14 +18,6 @@ public class SanityDecal : MonoBehaviour
     {
     }
 
-=======
-    [Tooltip("Controls the minimum sanity level for the decal to appear\n Decal will apear when the sanity is lower than the level chosen")]
-    [SerializeField] SanityLevel sanityLevel;
-
-    DecalProjector decal;
-
-    // Start is called before the first frame update
->>>>>>> 6470172 (Added blood Decals with a decal script. Also updated SanityManager to support gaining sanity)
     void Start()
     {
         SanityManager.Instance.OnSanityChange += UpdateVisibility;
@@ -34,11 +26,7 @@ public class SanityDecal : MonoBehaviour
 
     void UpdateVisibility(SanityLevel newSanityLevel)
     {
-<<<<<<< HEAD
         if (newSanityLevel == sanityLevel || (newSanityLevel < sanityLevel && appearBelow) || (newSanityLevel > sanityLevel && !appearBelow))
-=======
-        if (newSanityLevel <= sanityLevel)
->>>>>>> 6470172 (Added blood Decals with a decal script. Also updated SanityManager to support gaining sanity)
         {
             decal.fadeFactor = 1f;
             return;
@@ -47,3 +35,39 @@ public class SanityDecal : MonoBehaviour
         decal.fadeFactor = 0f;
     }
 }
+=======
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
+public class SanityDecal : MonoBehaviour
+{
+    [Header("Visibility")]
+    [Tooltip("Controls the sanity level for the decal to appear")]
+    [SerializeField] SanityLevel sanityLevel;
+    [Tooltip("Controls wethere the decal should appear below or above the sanity level\nNote: The decal always appears at the specified level")]
+    [SerializeField] bool appearBelow;
+
+    DecalProjector decal;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        SanityManager.Instance.OnSanityChange += UpdateVisibility;
+        decal = GetComponent<DecalProjector>();
+    }
+
+    void UpdateVisibility(SanityLevel newSanityLevel)
+    {
+        if (newSanityLevel == sanityLevel || (newSanityLevel < sanityLevel && appearBelow) || (newSanityLevel > sanityLevel && !appearBelow))
+        {
+            decal.fadeFactor = 1f;
+            return;
+        }
+
+        decal.fadeFactor = 0f;
+    }
+}
+>>>>>>> d3ba1b7 (Added a SanityClutter script to enable and disable object based on sanity)
