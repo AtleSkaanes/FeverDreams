@@ -4,31 +4,35 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class SanityDecal : MonoBehaviour
+public class SanityClutter : MonoBehaviour
 {
     [Header("Visibility")]
-    [Tooltip("Controls the sanity level for the decal to appear")]
+    [Tooltip("Controls the sanity level for the object to appear")]
     [SerializeField] SanityLevel sanityLevel;
-    [Tooltip("Controls wethere the decal should appear below or above the sanity level\nNote: The decal always appears at the specified level")]
+    [Tooltip("Controls wethere the object should appear below or above the sanity level\nNote: The object always appears at the specified level")]
     [SerializeField] bool appearBelow;
 
-    DecalProjector decal;
+    MeshRenderer meshRenderer;
+    Collider meshCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         SanityManager.Instance.OnSanityChange += UpdateVisibility;
-        decal = GetComponent<DecalProjector>();
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshCollider = GetComponent<Collider>();
     }
 
     void UpdateVisibility(SanityLevel newSanityLevel)
     {
         if (newSanityLevel == sanityLevel || (newSanityLevel < sanityLevel && appearBelow) || (newSanityLevel > sanityLevel && !appearBelow))
         {
-            decal.fadeFactor = 1f;
+            meshRenderer.enabled = true;
+            meshCollider.enabled = true;
             return;
         }
 
-        decal.fadeFactor = 0f;
+        meshRenderer.enabled = false;
+        meshCollider.enabled = false;
     }
 }
