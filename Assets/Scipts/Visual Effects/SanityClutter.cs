@@ -15,11 +15,7 @@ public class SanityClutter : MonoBehaviour
     Renderer meshRenderer;
     Collider meshCollider;
 
-
-    void Awake()
-    {
-    }
-
+    // Start is called before the first frame update
     void Start()
     {
         SanityManager.Instance.OnSanityChange += UpdateVisibility;

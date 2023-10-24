@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,6 @@ public class SanityClutter : MonoBehaviour
     [Tooltip("Controls wethere the object should appear below or above the sanity level\nNote: The object always appears at the specified level")]
     [SerializeField] bool appearBelow;
 
-<<<<<<< HEAD
     Renderer meshRenderer;
     Collider meshCollider;
 
@@ -25,16 +25,6 @@ public class SanityClutter : MonoBehaviour
     {
         SanityManager.Instance.OnSanityChange += UpdateVisibility;
         meshRenderer = GetComponent<Renderer>();
-=======
-    MeshRenderer meshRenderer;
-    Collider meshCollider;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        SanityManager.Instance.OnSanityChange += UpdateVisibility;
-        meshRenderer = GetComponent<MeshRenderer>();
->>>>>>> d3ba1b7 (Added a SanityClutter script to enable and disable object based on sanity)
         meshCollider = GetComponent<Collider>();
     }
 
@@ -51,3 +41,47 @@ public class SanityClutter : MonoBehaviour
         meshCollider.enabled = false;
     }
 }
+=======
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
+public class SanityClutter : MonoBehaviour
+{
+    [Header("Visibility")]
+    [Tooltip("Controls the sanity level for the object to appear")]
+    [SerializeField] SanityLevel sanityLevel;
+    [Tooltip("Controls wethere the object should appear below or above the sanity level\nNote: The object always appears at the specified level")]
+    [SerializeField] bool appearBelow;
+
+    Renderer meshRenderer;
+    Collider meshCollider;
+
+
+    void Awake()
+    {
+    }
+
+    void Start()
+    {
+        SanityManager.Instance.OnSanityChange += UpdateVisibility;
+        meshRenderer = GetComponent<Renderer>();
+        meshCollider = GetComponent<Collider>();
+    }
+
+    void UpdateVisibility(SanityLevel newSanityLevel)
+    {
+        if (newSanityLevel == sanityLevel || (newSanityLevel < sanityLevel && appearBelow) || (newSanityLevel > sanityLevel && !appearBelow))
+        {
+            meshRenderer.enabled = true;
+            meshCollider.enabled = true;
+            return;
+        }
+
+        meshRenderer.enabled = false;
+        meshCollider.enabled = false;
+    }
+}
+>>>>>>> f9ad06e (Fixed SanityManager script with LateStart)
