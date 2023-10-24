@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float staminaSec = 10f;
     [Space]
-    [SerializeField] private float movemntSpeed = 1f;
+    [SerializeField] private float movementSpeed = 1f;
     [SerializeField] private float sprintSpeed = 2f;
     [Space]
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            currentSpeed = movemntSpeed;
+            currentSpeed = movementSpeed;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
             IncreaseStamina();
         }
