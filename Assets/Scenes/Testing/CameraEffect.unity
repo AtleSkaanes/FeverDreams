@@ -628,6 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 851362369}
   - component: {fileID: 851362368}
+  - component: {fileID: 851362370}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
