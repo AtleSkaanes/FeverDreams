@@ -29,7 +29,7 @@ public class SanityManager : Singleton<SanityManager>
     {
         CurrentSanity = maxSanity;
         currentSanityLevel = SanityLevel.Sane;
-        StartCoroutine(LateStart(0.2f));
+        StartCoroutine(LateStart(0.01f));
     }
 
     // This is gross but unity doesn't have in built LateStart script :(
