@@ -13,8 +13,10 @@ public class SanityDecal : MonoBehaviour
     [SerializeField] bool appearBelow;
 
     DecalProjector decal;
+    void Awake()
+    {
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
         SanityManager.Instance.OnSanityChange += UpdateVisibility;

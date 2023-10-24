@@ -12,14 +12,18 @@ public class SanityClutter : MonoBehaviour
     [Tooltip("Controls wethere the object should appear below or above the sanity level\nNote: The object always appears at the specified level")]
     [SerializeField] bool appearBelow;
 
-    MeshRenderer meshRenderer;
+    Renderer meshRenderer;
     Collider meshCollider;
 
-    // Start is called before the first frame update
+
+    void Awake()
+    {
+    }
+
     void Start()
     {
         SanityManager.Instance.OnSanityChange += UpdateVisibility;
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponent<Renderer>();
         meshCollider = GetComponent<Collider>();
     }
 
