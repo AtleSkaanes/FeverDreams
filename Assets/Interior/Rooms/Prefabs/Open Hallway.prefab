@@ -32,9 +32,10 @@ Transform:
   m_LocalPosition: {x: 20, y: 0, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3472782419636174131}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5003123978734101387
 MonoBehaviour:
@@ -874,18 +875,18 @@ MonoBehaviour:
   m_Positions:
   - {x: -9, y: 0, z: 0}
   - {x: -9, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0.5, y: 4, z: 0}
+  - {x: 0.5, y: 0, z: 0}
   - {x: -9, y: 4, z: 0}
   - {x: -9, y: 7, z: 0}
-  - {x: 0, y: 7, z: 0}
-  - {x: 0, y: 4, z: 0}
+  - {x: 0.5, y: 7, z: 0}
+  - {x: 0.5, y: 4, z: 0}
   - {x: -9, y: 0, z: -12}
-  - {x: 0, y: 0, z: -12}
-  - {x: 0, y: 4, z: -12}
+  - {x: 0.5, y: 0, z: -12}
+  - {x: 0.5, y: 4, z: -12}
   - {x: -9, y: 4, z: -12}
-  - {x: 0, y: 4, z: -12}
-  - {x: 0, y: 7, z: -12}
+  - {x: 0.5, y: 4, z: -12}
+  - {x: 0.5, y: 7, z: -12}
   - {x: -9, y: 7, z: -12}
   - {x: -9, y: 4, z: -12}
   - {x: -20, y: 0, z: 0}
@@ -944,14 +945,14 @@ MonoBehaviour:
   - {x: -11, y: 0, z: 0}
   - {x: -9, y: 0, z: 0.5}
   - {x: -11, y: 0, z: 0.5}
-  - {x: 0, y: 7, z: -5}
-  - {x: 0, y: 7, z: 0}
+  - {x: 0.5, y: 7, z: -5}
+  - {x: 0.5, y: 7, z: 0}
   - {x: -9, y: 7, z: 0}
   - {x: -9, y: 7, z: -5}
   - {x: -9, y: 0, z: -5}
   - {x: -9, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: -5}
+  - {x: 0.5, y: 0, z: 0}
+  - {x: 0.5, y: 0, z: -5}
   - {x: -9, y: 7, z: -5}
   - {x: -9, y: 7, z: 0}
   - {x: -11, y: 7, z: 0}
@@ -976,22 +977,22 @@ MonoBehaviour:
   - {x: -20, y: 0, z: -5}
   - {x: -20, y: 4, z: -5}
   - {x: -20, y: 4, z: 0}
-  - {x: 0, y: 7, z: -12}
-  - {x: 0, y: 7, z: -7}
+  - {x: 0.5, y: 7, z: -12}
+  - {x: 0.5, y: 7, z: -7}
   - {x: -9, y: 7, z: -7}
   - {x: -9, y: 7, z: -12}
-  - {x: 0, y: 7, z: -7}
-  - {x: 0, y: 7, z: -5}
+  - {x: 0.5, y: 7, z: -7}
+  - {x: 0.5, y: 7, z: -5}
   - {x: -9, y: 7, z: -5}
   - {x: -9, y: 7, z: -7}
-  - {x: 0, y: 0, z: -12}
+  - {x: 0.5, y: 0, z: -12}
   - {x: -9, y: 0, z: -12}
   - {x: -9, y: 0, z: -7}
-  - {x: 0, y: 0, z: -7}
+  - {x: 0.5, y: 0, z: -7}
   - {x: -9, y: 0, z: -7}
   - {x: -9, y: 0, z: -5}
-  - {x: 0, y: 0, z: -5}
-  - {x: 0, y: 0, z: -7}
+  - {x: 0.5, y: 0, z: -5}
+  - {x: 0.5, y: 0, z: -7}
   - {x: -9, y: 7, z: -12}
   - {x: -9, y: 7, z: -7}
   - {x: -11, y: 7, z: -7}
@@ -1055,18 +1056,18 @@ MonoBehaviour:
   m_Textures0:
   - {x: -9, y: 0}
   - {x: -9, y: 4}
-  - {x: 0, y: 4}
-  - {x: 0, y: 0}
+  - {x: 0.5, y: 4}
+  - {x: 0.5, y: 0}
   - {x: -9, y: 4}
   - {x: -9, y: 7}
-  - {x: 0, y: 7}
-  - {x: 0, y: 4}
+  - {x: 0.5, y: 7}
+  - {x: 0.5, y: 4}
   - {x: 9, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 4}
+  - {x: -0.5, y: 0}
+  - {x: -0.5, y: 4}
   - {x: 9, y: 4}
-  - {x: 0, y: 4}
-  - {x: 0, y: 7}
+  - {x: -0.5, y: 4}
+  - {x: -0.5, y: 7}
   - {x: 9, y: 7}
   - {x: 9, y: 4}
   - {x: -20, y: 0}
@@ -1125,14 +1126,14 @@ MonoBehaviour:
   - {x: -11, y: 0}
   - {x: -9, y: 0.5}
   - {x: -11, y: 0.5}
-  - {x: 0, y: -5}
-  - {x: 0, y: 0}
+  - {x: -0.5, y: -5}
+  - {x: -0.5, y: 0}
   - {x: 9, y: 0}
   - {x: 9, y: -5}
   - {x: -9, y: -5}
   - {x: -9, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: -5}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: -5}
   - {x: 9, y: -5}
   - {x: 9, y: 0}
   - {x: 11, y: 0}
@@ -1157,22 +1158,22 @@ MonoBehaviour:
   - {x: -5, y: 0}
   - {x: -5, y: 4}
   - {x: 0, y: 4}
-  - {x: 0, y: -12}
-  - {x: 0, y: -7}
+  - {x: -0.5, y: -12}
+  - {x: -0.5, y: -7}
   - {x: 9, y: -7}
   - {x: 9, y: -12}
-  - {x: 0, y: -7}
-  - {x: 0, y: -5}
+  - {x: -0.5, y: -7}
+  - {x: -0.5, y: -5}
   - {x: 9, y: -5}
   - {x: 9, y: -7}
-  - {x: 0, y: -12}
+  - {x: 0.5, y: -12}
   - {x: -9, y: -12}
   - {x: -9, y: -7}
-  - {x: 0, y: -7}
+  - {x: 0.5, y: -7}
   - {x: -9, y: -7}
   - {x: -9, y: -5}
-  - {x: 0, y: -5}
-  - {x: 0, y: -7}
+  - {x: 0.5, y: -5}
+  - {x: 0.5, y: -7}
   - {x: 9, y: -12}
   - {x: 9, y: -7}
   - {x: 11, y: -7}
@@ -1605,19 +1606,11 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2225
+  m_VersionIndex: 2249
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 175
-    b: 174
-  - a: 179
-    b: 178
-  - a: 167
-    b: 166
-  - a: 171
-    b: 170
-  m_SelectedVertices: af000000ae000000b3000000b2000000a7000000a6000000ab000000aa000000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!114 &4528790246823530887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,3 +1711,87 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1001 &2519932210697711481
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1805948665741154303}
+    m_Modifications:
+    - target: {fileID: 1241936614694719853, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_Name
+      value: Cieling Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955267760691312328, guid: b3b1792ce6813f14e8658a25e4bab14c,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2667
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3b1792ce6813f14e8658a25e4bab14c, type: 3}
+--- !u!4 &3472782419636174131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1353707483101729354, guid: b3b1792ce6813f14e8658a25e4bab14c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2519932210697711481}
+  m_PrefabAsset: {fileID: 0}
