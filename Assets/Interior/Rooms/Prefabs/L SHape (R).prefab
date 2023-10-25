@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7169225369436895277}
   - component: {fileID: 6707290858767206396}
   m_Layer: 0
-  m_Name: L SHape (R)
+  m_Name: L Shape (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
