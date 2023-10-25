@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &372818561438467065
 MonoBehaviour:
@@ -592,20 +592,20 @@ MonoBehaviour:
   - {x: -4, y: 4, z: 0}
   - {x: -6, y: 0, z: 0}
   - {x: -4, y: 0, z: 0}
-  - {x: -6, y: 0, z: -1}
-  - {x: -4, y: 0, z: -1}
+  - {x: -6, y: 0, z: -0.5}
+  - {x: -4, y: 0, z: -0.5}
   - {x: -4, y: 0, z: 0}
   - {x: -4, y: 4, z: 0}
-  - {x: -4, y: 0, z: -1}
-  - {x: -4, y: 4, z: -1}
+  - {x: -4, y: 0, z: -0.5}
+  - {x: -4, y: 4, z: -0.5}
   - {x: -6, y: 4, z: 0}
   - {x: -6, y: 0, z: 0}
-  - {x: -6, y: 4, z: -1}
-  - {x: -6, y: 0, z: -1}
+  - {x: -6, y: 4, z: -0.5}
+  - {x: -6, y: 0, z: -0.5}
   - {x: -4, y: 4, z: 0}
   - {x: -6, y: 4, z: 0}
-  - {x: -4, y: 4, z: -1}
-  - {x: -6, y: 4, z: -1}
+  - {x: -4, y: 4, z: -0.5}
+  - {x: -6, y: 4, z: -0.5}
   m_Textures0:
   - {x: 10, y: 0}
   - {x: 6, y: 0}
@@ -693,20 +693,20 @@ MonoBehaviour:
   - {x: 4, y: 4}
   - {x: -6, y: 0}
   - {x: -4, y: 0}
-  - {x: -6, y: -1}
-  - {x: -4, y: -1}
+  - {x: -6, y: -0.5}
+  - {x: -4, y: -0.5}
   - {x: 0, y: 0}
   - {x: 0, y: 4}
-  - {x: 1, y: 0}
-  - {x: 1, y: 4}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: 4}
   - {x: 0, y: 4}
   - {x: 0, y: 0}
-  - {x: -1, y: 4}
-  - {x: -1, y: 0}
+  - {x: -0.5, y: 4}
+  - {x: -0.5, y: 0}
   - {x: 4, y: 0}
   - {x: 6, y: 0}
-  - {x: 4, y: -1}
-  - {x: 6, y: -1}
+  - {x: 4, y: -0.5}
+  - {x: 6, y: -0.5}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -919,11 +919,19 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1211
+  m_VersionIndex: 1263
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
+  m_SelectedEdges:
+  - a: 91
+    b: 90
+  - a: 99
+    b: 98
+  - a: 95
+    b: 94
+  - a: 87
+    b: 86
+  m_SelectedVertices: 5b0000005a00000063000000620000005f0000005e0000005700000056000000
 --- !u!114 &7905678380516300042
 MonoBehaviour:
   m_ObjectHideFlags: 0
