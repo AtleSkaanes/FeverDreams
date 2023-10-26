@@ -27,6 +27,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float viewAngle;
     [SerializeField] float hearingRange;
 
+    [Header("Attacking")]
+    [Tooltip("Amount of attacks pr. second")]
+    [SerializeField] float attackSpeed;
+    [SerializeField] float attackDamage;
+
+    float attackCooldown = 0;
+
     EnemyState state;
     NavMeshQueryFilter filter;
     NavMeshAgent agent;
@@ -49,9 +56,16 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        attackCooldown -= Time.deltaTime;
+        attackCooldown = Mathf.Max(attackCooldown, 0);
         if (state == EnemyState.Attacking)
         {
-            // ATTAAACKK!!!
+            if (attackCooldown == 0)
+            {
+                SanityManager.Instance.AttackSanity(attackDamage);
+                attackCooldown = 1 / attackSpeed;
+            }
+
             return;
         }
 
