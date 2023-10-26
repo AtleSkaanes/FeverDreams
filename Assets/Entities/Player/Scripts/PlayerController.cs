@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.UIElements;
 
+[DisallowMultipleComponent]
 [RequireComponent(typeof(PlayerInput), typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {

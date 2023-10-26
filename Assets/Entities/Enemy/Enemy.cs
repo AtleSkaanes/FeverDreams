@@ -5,6 +5,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
+[DisallowMultipleComponent]
+[RequireComponent(typeof(NavMeshAgent), typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform target;
@@ -28,11 +30,13 @@ public class Enemy : MonoBehaviour
     EnemyState state;
     NavMeshQueryFilter filter;
     NavMeshAgent agent;
+    AudioSource stompSFX;
 
     // Start is called before the first frame update
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        stompSFX= GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -113,11 +117,6 @@ public class Enemy : MonoBehaviour
         state = EnemyState.Chasing;
     }
 
-    void UpdateState()
-    {
-        
-    }
-
     bool FindRandomPath(float angleOffset, int tries)
     {
         NavMeshHit hit;
@@ -172,6 +171,18 @@ public class Enemy : MonoBehaviour
 
         return false;
     }
+
+    // temporary, probably good enough but can be replaced with animation based timing
+    IEnumerator MakeStompSound(float stompPrSpeed)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1 / (stompPrSpeed * agent.speed));
+
+            stompSFX.Play();
+        }
+    }
+
 }
 
 enum EnemyState
