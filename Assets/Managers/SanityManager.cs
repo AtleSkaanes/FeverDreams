@@ -29,14 +29,14 @@ public class SanityManager : Singleton<SanityManager>
     {
         CurrentSanity = maxSanity;
         currentSanityLevel = SanityLevel.Sane;
-        StartCoroutine(LateStart(0.01f));
+        StartCoroutine(LateStart());
     }
 
     // This is gross but unity doesn't have in built LateStart script :(
     // The OnSanityChange will get called before sanityClutter script is ready
-    IEnumerator LateStart(float seconds)
+    IEnumerator LateStart()
     {
-        yield return new WaitForSeconds(seconds);
+        yield return null;
 
         OnSanityChange?.Invoke(currentSanityLevel);
     }
