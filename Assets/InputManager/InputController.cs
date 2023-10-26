@@ -71,6 +71,24 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseItemPrimary"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd4df99a-4cc4-4628-ae99-6715ed4e4ee9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseItemSecondary"",
+                    ""type"": ""Button"",
+                    ""id"": ""38e9067c-d549-4281-b7d7-6bf152b1673f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -183,6 +201,28 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5ff64da-92d4-4f55-82d7-884c3160c8f1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseItemPrimary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""922c74a8-1fcb-40d1-897f-ef46d0b2f7af"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseItemSecondary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -196,6 +236,8 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_ToggleInventory = m_Player.FindAction("ToggleInventory", throwIfNotFound: true);
+        m_Player_UseItemPrimary = m_Player.FindAction("UseItemPrimary", throwIfNotFound: true);
+        m_Player_UseItemSecondary = m_Player.FindAction("UseItemSecondary", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,6 +304,8 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_ToggleInventory;
+    private readonly InputAction m_Player_UseItemPrimary;
+    private readonly InputAction m_Player_UseItemSecondary;
     public struct PlayerActions
     {
         private @InputController m_Wrapper;
@@ -271,6 +315,8 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @ToggleInventory => m_Wrapper.m_Player_ToggleInventory;
+        public InputAction @UseItemPrimary => m_Wrapper.m_Player_UseItemPrimary;
+        public InputAction @UseItemSecondary => m_Wrapper.m_Player_UseItemSecondary;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -295,6 +341,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @ToggleInventory.started += instance.OnToggleInventory;
             @ToggleInventory.performed += instance.OnToggleInventory;
             @ToggleInventory.canceled += instance.OnToggleInventory;
+            @UseItemPrimary.started += instance.OnUseItemPrimary;
+            @UseItemPrimary.performed += instance.OnUseItemPrimary;
+            @UseItemPrimary.canceled += instance.OnUseItemPrimary;
+            @UseItemSecondary.started += instance.OnUseItemSecondary;
+            @UseItemSecondary.performed += instance.OnUseItemSecondary;
+            @UseItemSecondary.canceled += instance.OnUseItemSecondary;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -314,6 +366,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @ToggleInventory.started -= instance.OnToggleInventory;
             @ToggleInventory.performed -= instance.OnToggleInventory;
             @ToggleInventory.canceled -= instance.OnToggleInventory;
+            @UseItemPrimary.started -= instance.OnUseItemPrimary;
+            @UseItemPrimary.performed -= instance.OnUseItemPrimary;
+            @UseItemPrimary.canceled -= instance.OnUseItemPrimary;
+            @UseItemSecondary.started -= instance.OnUseItemSecondary;
+            @UseItemSecondary.performed -= instance.OnUseItemSecondary;
+            @UseItemSecondary.canceled -= instance.OnUseItemSecondary;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -338,5 +396,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnToggleInventory(InputAction.CallbackContext context);
+        void OnUseItemPrimary(InputAction.CallbackContext context);
+        void OnUseItemSecondary(InputAction.CallbackContext context);
     }
 }

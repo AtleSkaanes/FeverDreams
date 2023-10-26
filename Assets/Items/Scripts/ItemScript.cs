@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class ItemScript : MonoBehaviour
 {
-    public string itemName = "ITEM NAME";
-    public bool isInHand = false;
-    public Vector3 layingRotation = new Vector3(0, 0, 90);
+    public string ItemName = "ITEM NAME";
+    public bool IsInHand = false;
+    public Vector3 LayingRotation = new(0, 0, 90);
+    public ItemType itemType;
 
     private void Start()
     {
@@ -20,15 +23,27 @@ public class ItemScript : MonoBehaviour
 
     public void PutInHand()
     {
-        isInHand = true;
+        IsInHand = true;
+        transform.eulerAngles = new Vector3(0, 0, 0);
+    }
+
+    public void PutInHand(Transform hand)
+    {
+        IsInHand = true;
+        transform.SetParent(hand);
+        transform.localPosition = Vector3.zero;
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     public void PutOnGround()
     {
-        isInHand = false;
-        transform.eulerAngles = layingRotation;
+        IsInHand = false;
+        transform.eulerAngles = LayingRotation;
     }
 
-    
+    public enum ItemType
+    {
+        Gun,
+        Pill
+    }
 }
