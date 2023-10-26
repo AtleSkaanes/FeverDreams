@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4669003201397286776}
   - component: {fileID: 2343571683276677815}
   - component: {fileID: 3388898743098144611}
+  - component: {fileID: 2274080350182461366}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
 --- !u!33 &5976827010477346946
 MeshFilter:
@@ -177,3 +178,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.0026379346, z: 0.013847496}
   m_Center: {x: 0, y: 0.01868099, z: -0.0100762425}
+--- !u!208 &2274080350182461366
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011147308933766398}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.010000001, y: 0.020000001, z: 0.009000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.008}
+  m_TimeToStationary: 0.5

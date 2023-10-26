@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 58215101202515393}
   - component: {fileID: 3790066776862265539}
   - component: {fileID: 1743388869167586781}
+  - component: {fileID: 183264891803156742}
   m_Layer: 0
   m_Name: bed with matress
   m_TagString: Untagged
@@ -345,3 +346,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0106373485, y: 0.0011197996, z: 0.010419242}
   m_Center: {x: -0.000001540184, y: -0.011106412, z: 0.0052091787}
+--- !u!208 &183264891803156742
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7615473927607240481}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.012, z: 0.008}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.008}
+  m_TimeToStationary: 0.5

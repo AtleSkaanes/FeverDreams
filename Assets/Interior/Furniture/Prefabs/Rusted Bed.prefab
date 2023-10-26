@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5615218220976529053}
   - component: {fileID: 739796493238084140}
   - component: {fileID: 3104809741145920903}
+  - component: {fileID: 3875206277619553738}
   m_Layer: 0
   m_Name: Rusted Bed
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 107.738}
 --- !u!33 &564851771234107329
 MeshFilter:
@@ -177,3 +178,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.010637359, y: 0.0009923815, z: 0.010639667}
   m_Center: {x: -0.0000015419474, y: -0.011170276, z: 0.0053194035}
+--- !u!208 &3875206277619553738
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10617478610441533}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.012, z: 0.008}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.008}
+  m_TimeToStationary: 0.5
