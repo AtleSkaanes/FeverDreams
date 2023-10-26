@@ -14,6 +14,7 @@ public class SanityClutter : MonoBehaviour
 
     Renderer meshRenderer;
     Collider meshCollider;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class SanityClutter : MonoBehaviour
         SanityManager.Instance.OnSanityChange += UpdateVisibility;
         meshRenderer = GetComponent<Renderer>();
         meshCollider = GetComponent<Collider>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void UpdateVisibility(SanityLevel newSanityLevel)
@@ -29,10 +31,13 @@ public class SanityClutter : MonoBehaviour
         {
             meshRenderer.enabled = true;
             meshCollider.enabled = true;
+            rb.isKinematic = false;
             return;
         }
 
         meshRenderer.enabled = false;
         meshCollider.enabled = false;
+        rb.isKinematic = true;
+
     }
 }
