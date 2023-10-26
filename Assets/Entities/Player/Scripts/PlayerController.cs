@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Sprint();
+        CheckSprint();
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, virtualCamera.transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
@@ -43,9 +43,11 @@ public class PlayerController : MonoBehaviour
         //Vector3 move = new Vector3(movement.x, 0, movement.y);
         Vector3 move = transform.forward * movement.y + transform.right * movement.x;
         characterController.SimpleMove(move * currentSpeed * Time.deltaTime);
+
+        GameManager.Instance.OnNoise.Invoke(transform.position);
     }
 
-    void Sprint()
+    void CheckSprint()
     {
         if (input.isSprinting && currentStamina > Mathf.Epsilon)
         {
