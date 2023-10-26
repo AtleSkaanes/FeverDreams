@@ -9,13 +9,8 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     protected void Awake()
     {
         if (Instance == null)
-        {
             Instance = this as T;
-            DontDestroyOnLoad(Instance);
-        }
         else
-        {
             Destroy(this);
-        }
     }
 }
