@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2410287005263147058}
   - component: {fileID: 8407346377533082564}
   - component: {fileID: 3489186463472314760}
-  - component: {fileID: 3248539217422422863}
+  - component: {fileID: 8792383286892525005}
   - component: {fileID: 3495746432001415394}
   m_Layer: 0
   m_Name: Player
@@ -68,7 +68,7 @@ Transform:
   - {fileID: 7656258586360566057}
   - {fileID: 4961135751103757396}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &2410287005263147058
 CharacterController:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaSec: 10
-  movemntSpeed: 75
+  movementSpeed: 1
   sprintSpeed: 150
   virtualCamera: {fileID: 0}
 --- !u!114 &3489186463472314760
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSprinting: 0
---- !u!114 &3248539217422422863
+--- !u!114 &8792383286892525005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,10 +134,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3246426548953288516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae311508663c4284b86d696ff6737ec0, type: 3}
+  m_Script: {fileID: 11500000, guid: 845bcb16e42d9cd4fa0a38445924dff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 5
+  hand: {fileID: 4961135751103757396}
 --- !u!136 &3495746432001415394
 CapsuleCollider:
   m_ObjectHideFlags: 0

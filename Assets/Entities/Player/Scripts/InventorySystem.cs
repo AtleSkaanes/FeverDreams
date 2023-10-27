@@ -11,6 +11,8 @@ public class InventorySystem : MonoBehaviour
     private List<GameObject> itemsInRange = new List<GameObject>();
     private PlayerInput input;
 
+    public int KeysCollected = 0;
+
     void Start()
     {
         input = GetComponent<PlayerInput>();
@@ -30,9 +32,15 @@ public class InventorySystem : MonoBehaviour
 
         else if (itemType == ItemScript.ItemType.Pill)
         {
-            Debug.Log("InventorySystem.cs; Line 31; the function for this should be in the next pull");
-            // SanityManager.Instance.HealSanity(15);
+            SanityManager.Instance.HealSanity(15);
             Destroy(itemsInRange[0]);
+        }
+
+        else if (itemType == ItemScript.ItemType.Key)
+        {
+            KeysCollected++;
+            Destroy(itemsInRange[0]);
+            Debug.Log("Keys collected: " + KeysCollected);
         }
 
         itemsInRange.RemoveAt(0);
