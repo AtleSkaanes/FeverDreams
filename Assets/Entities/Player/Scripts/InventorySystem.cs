@@ -19,6 +19,7 @@ public class InventorySystem : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI keysCollectedText;
     [SerializeField] private TextMeshProUGUI escapeText;
+    [SerializeField] private GameObject endScreen;
 
     void Start()
     {
@@ -48,6 +49,15 @@ public class InventorySystem : MonoBehaviour
             Destroy(itemsInRange[0]);
             UpdateObjectiveUI();
             Debug.Log("Keys collected: " + KeysCollected);
+        }
+
+        else if (itemType == ItemScript.ItemType.Exit)
+        {
+            if (KeysCollected >= KeysRequired)
+            {
+                endScreen.SetActive(true);
+                Time.timeScale = 0f;
+            }
         }
 
         itemsInRange.RemoveAt(0);

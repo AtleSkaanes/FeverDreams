@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private float currentSpeed;
     private float currentStamina;
 
-    private PlayerInput input;
     private CharacterController characterController;
 
 

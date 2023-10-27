@@ -46,6 +46,7 @@ public class ItemScript : MonoBehaviour
     {
         Gun,
         Pill,
-        Key
+        Key,
+        Exit
     }
 }

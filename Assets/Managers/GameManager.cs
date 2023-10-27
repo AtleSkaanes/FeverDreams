@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -10,6 +11,12 @@ public class GameManager : Singleton<GameManager>
     new void Awake()
     {
         base.Awake();
-        OnNoise += (Vector3 pos) => Debug.Log($"Something made noise at {pos}");
+    }
+
+    public void RestartLvl()
+    {
+        Debug.Log("Restarting...");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

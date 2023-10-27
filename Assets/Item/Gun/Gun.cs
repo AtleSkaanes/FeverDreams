@@ -21,10 +21,6 @@ public class Gun : ItemScript
     new void Start()
     {
         base.Start();
-    }
-
-    private void OnEnable()
-    {
         InputManager.Instance.onUsePrimary += Shoot;
     }
 
