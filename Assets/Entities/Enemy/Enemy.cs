@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void TakeDamage()
     {
         animator.SetTrigger("OnDamage");
     }
@@ -123,17 +123,18 @@ public class Enemy : MonoBehaviour
         // Draw range where the enemy can see the player everywhere.
         Handles.DrawWireDisc(transform.position, transform.up, awarenessRange, 2);
     }
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider collision)
     {
         Debug.Log("ATTACK");
-        if (collision.collider.CompareTag("Player"))
+        if (collision.GetComponent<Collider>().CompareTag("Player"))
             state = EnemyState.Attacking;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         Debug.Log("RETREAT");
-        if (collision.collider.CompareTag("Player"))
+        if (collision.GetComponent<Collider>().CompareTag("Player"))
             state = EnemyState.FinishedRoute;
     }
 
