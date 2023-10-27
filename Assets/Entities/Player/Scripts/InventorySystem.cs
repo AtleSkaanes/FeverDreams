@@ -40,13 +40,13 @@ public class InventorySystem : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Item")
+        if (other.transform.tag == "Item" && !other.gameObject.GetComponent<ItemScript>().IsInHand)
             itemsInRange.Add(other.gameObject);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Item")
+        if (other.transform.tag == "Item" && !other.gameObject.GetComponent<ItemScript>().IsInHand)
             itemsInRange.Remove(other.gameObject);
     }
 }

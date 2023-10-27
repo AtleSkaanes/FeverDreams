@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 335020749209987953}
   - component: {fileID: 7996826741554135427}
   m_Layer: 0
-  m_Name: Pill
+  m_Name: Gun
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb6a66be7450b94692ee0b3d3fa5ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: Pill
+  ItemName: Gun
   IsInHand: 0
   LayingRotation: {x: 0, y: 0, z: 90}
-  itemType: 1
+  itemType: 0
 --- !u!1 &9067476272021906007
 GameObject:
   m_ObjectHideFlags: 0
