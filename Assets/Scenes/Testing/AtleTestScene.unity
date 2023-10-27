@@ -667,6 +667,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8407346377533082564, guid: 110156981b7332c478243b23b810d090,
         type: 3}
+      propertyPath: staminaSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407346377533082564, guid: 110156981b7332c478243b23b810d090,
+        type: 3}
+      propertyPath: sprintSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407346377533082564, guid: 110156981b7332c478243b23b810d090,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407346377533082564, guid: 110156981b7332c478243b23b810d090,
+        type: 3}
       propertyPath: virtualCamera
       value: 
       objectReference: {fileID: 1687582727}
