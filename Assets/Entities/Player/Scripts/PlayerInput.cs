@@ -29,7 +29,7 @@ public class PlayerInput : Singleton<PlayerInput>
 
     private InputController inputController;
     
-    private void Awake()
+    private new void Awake()
     {
         inputController = new InputController();
     }

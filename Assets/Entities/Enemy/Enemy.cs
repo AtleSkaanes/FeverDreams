@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(NavMeshAgent), typeof(AudioSource))]
+[RequireComponent(typeof(NavMeshAgent), typeof(AudioSource), typeof(Animator))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform target;
@@ -39,12 +39,14 @@ public class Enemy : MonoBehaviour
     NavMeshQueryFilter filter;
     NavMeshAgent agent;
     AudioSource stompSFX;
+    Animator animator;
 
     // Start is called before the first frame update
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         stompSFX= GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -61,6 +63,7 @@ public class Enemy : MonoBehaviour
         attackCooldown = Mathf.Max(attackCooldown, 0);
         if (state == EnemyState.Attacking)
         {
+            animator.SetBool("IsAttacking", true);
             if (attackCooldown == 0)
             {
                 SanityManager.Instance.AttackSanity(attackDamage);
@@ -71,13 +74,20 @@ public class Enemy : MonoBehaviour
         }
 
         else if (TryHuntTarget())
+        {
             state = EnemyState.Chasing;
+            animator.SetBool("IsRunning", true);
+        }
 
         else if (agent.remainingDistance <= agent.stoppingDistance)
             state = EnemyState.FinishedRoute;
 
-        else
+        else if(state != EnemyState.Chasing)
+        {
             state = EnemyState.Scouting;
+            animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsRunning", false);
+        }
 
         if (state == EnemyState.FinishedRoute)
         {
@@ -86,6 +96,11 @@ public class Enemy : MonoBehaviour
             if (!FindRandomPath(0f, 50))
                 FindRandomPath(180f, 50);
         }
+    }
+
+    public void Attack()
+    {
+        animator.SetTrigger("OnDamage");
     }
 
     void OnDrawGizmos()
@@ -110,12 +125,14 @@ public class Enemy : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player")) { }
+        Debug.Log("ATTACK");
+        if (collision.collider.CompareTag("Player"))
             state = EnemyState.Attacking;
     }
 
     private void OnCollisionExit(Collision collision)
     {
+        Debug.Log("RETREAT");
         if (collision.collider.CompareTag("Player"))
             state = EnemyState.FinishedRoute;
     }
@@ -134,6 +151,10 @@ public class Enemy : MonoBehaviour
 
         agent.speed = huntingSpeed;
         agent.acceleration = huntingAcc;
+
+        animator.SetBool("IsRunning", true);
+
+        state = EnemyState.Chasing;
     }
 
     bool FindRandomPath(float angleOffset, int tries)

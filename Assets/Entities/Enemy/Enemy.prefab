@@ -222,9 +222,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7600574168423876265}
+  - component: {fileID: 7880032079092796651}
   - component: {fileID: 4349319747804061837}
   - component: {fileID: 1687239840261810580}
-  - component: {fileID: 7880032079092796651}
   - component: {fileID: 8580850960574780828}
   m_Layer: 0
   m_Name: Enemy
@@ -251,8 +251,34 @@ Transform:
   - {fileID: 1704610162014179086}
   - {fileID: 4397089900810519432}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7880032079092796651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024295939242220899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a68aa8d6bfecb47901404db8c0fb2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  huntingSpeed: 12
+  huntingAcc: 20
+  wanderSpeed: 6
+  wanderAcc: 5
+  wanderMaxTurnAngle: 45
+  wanderMaxRange: 25
+  wanderMinRange: 5
+  viewRange: 20
+  viewAngle: 35
+  hearingRange: 45
+  awarenessRange: 6
+  attackSpeed: 0.75
+  attackDamage: 20
 --- !u!195 &4349319747804061837
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -371,32 +397,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7880032079092796651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1024295939242220899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54a68aa8d6bfecb47901404db8c0fb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  huntingSpeed: 0
-  huntingAcc: 0
-  wanderSpeed: 0
-  wanderAcc: 0
-  wanderMaxTurnAngle: 0
-  wanderMaxRange: 0
-  wanderMinRange: 0
-  viewRange: 0
-  viewAngle: 0
-  hearingRange: 0
-  awarenessRange: 0
-  attackSpeed: 0
-  attackDamage: 0
 --- !u!95 &8580850960574780828
 Animator:
   serializedVersion: 5
