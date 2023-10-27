@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &41296357 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4961135751103757396, guid: 110156981b7332c478243b23b810d090,
+    type: 3}
+  m_PrefabInstance: {fileID: 731881125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &89738992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4078829736364078335, guid: 110156981b7332c478243b23b810d090,
@@ -1032,6 +1038,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3248539217422422863, guid: 110156981b7332c478243b23b810d090,
+        type: 3}
+      propertyPath: hand
+      value: 
+      objectReference: {fileID: 41296357}
     - target: {fileID: 4078829736364078335, guid: 110156981b7332c478243b23b810d090,
         type: 3}
       propertyPath: m_RootOrder
