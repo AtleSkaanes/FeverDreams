@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-1706018527932858781
 MonoBehaviour:
@@ -51,15 +51,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   huntingSpeed: 16
-  huntingAcc: 18
+  huntingAcc: 25
   wanderSpeed: 5
-  wanderAcc: 5
+  wanderAcc: 4
   wanderMaxTurnAngle: 40
   wanderMaxRange: 25
   wanderMinRange: 6
   viewRange: 20
   viewAngle: 35
   hearingRange: 40
+  awarenessRange: 6
   attackSpeed: 0.5
   attackDamage: 20
 --- !u!33 &332351836711203044
