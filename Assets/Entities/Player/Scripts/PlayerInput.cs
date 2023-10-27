@@ -31,6 +31,7 @@ public class PlayerInput : Singleton<PlayerInput>
     
     private void Awake()
     {
+        base.Awake();
         inputController = new InputController();
     }
 
