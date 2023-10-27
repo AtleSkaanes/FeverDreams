@@ -29,13 +29,17 @@ public class PlayerInput : Singleton<PlayerInput>
 
     private InputController inputController;
     
-    private void Awake()
+<<<<<<< HEAD
+    private new void Awake()
     {
         inputController = new InputController();
     }
+=======
+>>>>>>> 3acf0a6 (Added key prefab)
 
     private void OnEnable()
     {
+        inputController = new InputController();
         inputController.Enable();
     }
 

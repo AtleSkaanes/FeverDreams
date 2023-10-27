@@ -44,6 +44,7 @@ public class ItemScript : MonoBehaviour
     public enum ItemType
     {
         Gun,
-        Pill
+        Pill,
+        Key
     }
 }

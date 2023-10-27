@@ -19,14 +19,14 @@ public class PlayerController : MonoBehaviour
     private float currentSpeed;
     private float currentStamina;
 
-    private PlayerInput input;
+    //private PlayerInput input;
     private CharacterController characterController;
 
 
     void Start()
     {
-        input = GetComponent<PlayerInput>();
-        input.onWASD += MovePlayer;
+        //input = GetComponent<PlayerInput>();
+        PlayerInput.Instance.onWASD += MovePlayer;
 
         characterController = GetComponent<CharacterController>();
         currentStamina = staminaSec;
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     void CheckSprint()
     {
-        if (input.isSprinting && currentStamina > Mathf.Epsilon)
+        if (PlayerInput.Instance.isSprinting && currentStamina > Mathf.Epsilon)
         {
             currentSpeed = sprintSpeed;
             transform.eulerAngles = new Vector3(7.5f, transform.eulerAngles.y, transform.eulerAngles.z);
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void IncreaseStamina()
     {
-        if (input.isSprinting) return;
+        if (PlayerInput.Instance.isSprinting) return;
 
         currentStamina += Time.deltaTime;
         currentStamina = Mathf.Clamp(currentStamina, 0, staminaSec);
