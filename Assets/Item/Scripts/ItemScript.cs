@@ -7,11 +7,12 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
     public string ItemName = "ITEM NAME";
-    public bool IsInHand = false;
+    [HideInInspector] public bool IsInHand = false;
     public Vector3 LayingRotation = new(0, 0, 90);
     public ItemType itemType;
 
-    private void Start()
+
+    protected void Start()
     {
         PutOnGround();
     }
@@ -24,7 +25,7 @@ public class ItemScript : MonoBehaviour
     public void PutInHand()
     {
         IsInHand = true;
-        transform.eulerAngles = new Vector3(0, 0, 0);
+        transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
     public void PutInHand(Transform hand)
@@ -32,7 +33,7 @@ public class ItemScript : MonoBehaviour
         IsInHand = true;
         transform.SetParent(hand);
         transform.localPosition = Vector3.zero;
-        transform.eulerAngles = new Vector3(0, 0, 0);
+        transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
     public void PutOnGround()

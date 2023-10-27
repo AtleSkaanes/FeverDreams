@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.Interactions;
 using UnityEngine.UIElements;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(PlayerInput), typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float staminaSec = 10f;
@@ -19,14 +19,12 @@ public class PlayerController : MonoBehaviour
     private float currentSpeed;
     private float currentStamina;
 
-    private PlayerInput input;
     private CharacterController characterController;
 
 
     void Start()
     {
-        input = GetComponent<PlayerInput>();
-        input.onWASD += MovePlayer;
+        InputManager.Instance.onWASD += MovePlayer;
 
         characterController = GetComponent<CharacterController>();
         currentStamina = staminaSec;
@@ -45,12 +43,13 @@ public class PlayerController : MonoBehaviour
         Vector3 move = transform.forward * movement.y + transform.right * movement.x;
         characterController.SimpleMove(move * currentSpeed * Time.deltaTime);
 
-        GameManager.Instance.OnNoise.Invoke(transform.position);
+        if (InputManager.Instance.isSprinting)
+            GameManager.Instance.OnNoise.Invoke(transform.position);
     }
 
     void CheckSprint()
     {
-        if (input.isSprinting && currentStamina > Mathf.Epsilon)
+        if (InputManager.Instance.isSprinting && currentStamina > Mathf.Epsilon)
         {
             currentSpeed = sprintSpeed;
             transform.eulerAngles = new Vector3(7.5f, transform.eulerAngles.y, transform.eulerAngles.z);
@@ -65,7 +64,8 @@ public class PlayerController : MonoBehaviour
 
     void IncreaseStamina()
     {
-        if (input.isSprinting) return;
+        if (InputManager.Instance.isSprinting)
+            return;
 
         currentStamina += Time.deltaTime;
         currentStamina = Mathf.Clamp(currentStamina, 0, staminaSec);

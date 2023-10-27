@@ -9,12 +9,10 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private Transform hand;
 
     private List<GameObject> itemsInRange = new List<GameObject>();
-    private PlayerInput input;
 
     void Start()
     {
-        input = GetComponent<PlayerInput>();
-        input.onInteract += PickUpItem;
+        InputManager.Instance.onInteract += PickUpItem;
     }
 
     void PickUpItem()
@@ -25,7 +23,7 @@ public class InventorySystem : MonoBehaviour
 
         if (itemType == ItemScript.ItemType.Gun)
         {
-            itemsInRange[0].GetComponent<ItemScript>().PutInHand(hand);
+            itemsInRange[0].GetComponent<Gun>().PutInHand(hand);
         }
 
         else if (itemType == ItemScript.ItemType.Pill)
