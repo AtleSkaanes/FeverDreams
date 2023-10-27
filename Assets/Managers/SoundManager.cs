@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Resposible for playing global sounds
 /// </summary>
-public class SoundManager : Singleton<SoundManager>
+public class SoundManager: Singleton<SoundManager>
 {
     public Sound[] sounds;
 

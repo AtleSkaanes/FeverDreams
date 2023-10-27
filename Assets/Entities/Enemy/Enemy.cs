@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float viewRange;
     [SerializeField] float viewAngle;
     [SerializeField] float hearingRange;
+    [SerializeField] float awarenessRange;
 
     [Header("Attacking")]
     [Tooltip("Amount of attacks pr. second")]
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        if (TryHuntTarget())
+        else if (TryHuntTarget())
             state = EnemyState.Chasing;
 
         else if (agent.remainingDistance <= agent.stoppingDistance)
@@ -78,8 +79,6 @@ public class Enemy : MonoBehaviour
         else
             state = EnemyState.Scouting;
 
-
-        // Enemy is not done hunting or walking to next random point
         if (state == EnemyState.FinishedRoute)
         {
             agent.speed = wanderSpeed;
@@ -105,6 +104,9 @@ public class Enemy : MonoBehaviour
         // Draw hearing Range
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.up, hearingRange, 3);
+
+        // Draw range where the enemy can see the player everywhere.
+        Handles.DrawWireDisc(transform.position, transform.up, awarenessRange, 2);
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -124,11 +126,14 @@ public class Enemy : MonoBehaviour
             return;
 
         float distance = (position - transform.position).magnitude;
+
         if (distance > hearingRange)
             return;
 
         agent.SetDestination(position);
-        state = EnemyState.Chasing;
+
+        agent.speed = huntingSpeed;
+        agent.acceleration = huntingAcc;
     }
 
     bool FindRandomPath(float angleOffset, int tries)
@@ -152,6 +157,15 @@ public class Enemy : MonoBehaviour
 
     bool TryHuntTarget()
     {
+        if ((target.position - transform.position).magnitude < awarenessRange)
+        {
+            agent.speed = huntingSpeed;
+            agent.acceleration = huntingAcc;
+
+            agent.SetDestination(target.position);
+            return true;
+        }
+
         // Angle between 2 vectors:
         //                a ● b
         // angle = ACos( ─────── )
@@ -175,7 +189,6 @@ public class Enemy : MonoBehaviour
             if (!hit.collider.CompareTag("Player"))
                 return false;
 
-            state = EnemyState.Chasing;
             agent.speed = huntingSpeed;
             agent.acceleration = huntingAcc;
 
