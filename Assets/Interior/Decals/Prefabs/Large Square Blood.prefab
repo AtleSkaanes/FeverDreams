@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1872020676121432905, guid: 44222f61d6037b64e8f3d3e12195caea,
         type: 3}
       propertyPath: m_Name
-      value: Large Square Blood Variant
+      value: Large Square Blood
       objectReference: {fileID: 0}
     - target: {fileID: 3316103857119177666, guid: 44222f61d6037b64e8f3d3e12195caea,
         type: 3}
@@ -67,6 +67,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820539823664179929, guid: 44222f61d6037b64e8f3d3e12195caea,
+        type: 3}
+      propertyPath: sanityLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7684552302295055996, guid: 44222f61d6037b64e8f3d3e12195caea,
         type: 3}
