@@ -13,6 +13,7 @@ public class SanityManager : Singleton<SanityManager>
     [SerializeField] float sanityDropRate;
     [Tooltip("How many sanity units between each stage")]
     [SerializeField] float sanityLevelIntervalSize;
+    [SerializeField] private GameObject dieScreen;
 
     public UnityAction<SanityLevel> OnSanityChange;
 
@@ -56,6 +57,13 @@ public class SanityManager : Singleton<SanityManager>
         {
             currentSanityLevel += 1;
             OnSanityChange?.Invoke(currentSanityLevel);
+        }
+
+        else if (CurrentSanity <= Mathf.Epsilon)
+        {
+            Debug.Log("you die :)");
+            dieScreen.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 

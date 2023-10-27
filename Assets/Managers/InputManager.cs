@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class InputManager : Singleton<InputManager>
 {
     public delegate void OnWASD(Vector2 movement);
+
     public delegate void OnInteract();
 
     public delegate void OnSprint();

@@ -63,6 +63,8 @@ public class Enemy : MonoBehaviour
         attackCooldown = Mathf.Max(attackCooldown, 0);
         if (state == EnemyState.Attacking)
         {
+
+            Debug.Log("123456789");
             animator.SetBool("IsAttacking", true);
             if (attackCooldown == 0)
             {
