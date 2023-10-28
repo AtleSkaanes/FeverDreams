@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         if (!InputManager.Instance.isSprinting || !isMoving)
             IncreaseStamina();
 
+        // resetting variable for next frame
         isMoving = false;
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, virtualCamera.transform.eulerAngles.y, transform.eulerAngles.z);

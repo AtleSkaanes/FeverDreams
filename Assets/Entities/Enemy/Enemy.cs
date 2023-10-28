@@ -32,8 +32,10 @@ public class Enemy : MonoBehaviour
     [Tooltip("Amount of attacks pr. second")]
     [SerializeField] float attackSpeed;
     [SerializeField] float attackDamage;
+    [SerializeField] float stunTime;
 
     float attackCooldown = 0;
+    float stunCooldown = 0;
 
     EnemyState state;
     NavMeshQueryFilter filter;
@@ -61,6 +63,12 @@ public class Enemy : MonoBehaviour
     {
         attackCooldown -= Time.deltaTime;
         attackCooldown = Mathf.Max(attackCooldown, 0);
+        if (stunCooldown > 0)
+        {
+            stunCooldown -= Time.deltaTime;
+            return;
+        }
+
         if (state == EnemyState.Attacking)
         {
             animator.SetBool("IsAttacking", true);
@@ -101,6 +109,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage()
     {
         animator.SetTrigger("OnDamage");
+        state = EnemyState.Stunned;
+        stunCooldown = stunTime;
     }
 
     void OnTriggerEnter(Collider collision)
@@ -216,5 +226,6 @@ enum EnemyState
     FinishedRoute,
     Scouting,
     Chasing,
-    Attacking
+    Attacking,
+    Stunned
 }
