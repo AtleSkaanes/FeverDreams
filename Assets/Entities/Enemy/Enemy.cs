@@ -63,8 +63,6 @@ public class Enemy : MonoBehaviour
         attackCooldown = Mathf.Max(attackCooldown, 0);
         if (state == EnemyState.Attacking)
         {
-
-            Debug.Log("123456789");
             animator.SetBool("IsAttacking", true);
             if (attackCooldown == 0)
             {
@@ -105,37 +103,14 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("OnDamage");
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        // Draw FOV
-        for (int i = -1; i < 2; i++)
-        {
-            Vector3 lineDir = Quaternion.AngleAxis(viewAngle * i, Vector3.up) * transform.forward;
-            Vector3 endPos = transform.position + lineDir * viewRange;
-
-            Gizmos.DrawLine(transform.position, endPos);
-        }
-
-        // Draw hearing Range
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(transform.position, transform.up, hearingRange, 3);
-
-        // Draw range where the enemy can see the player everywhere.
-        Handles.DrawWireDisc(transform.position, transform.up, awarenessRange, 2);
-    }
-
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("ATTACK");
         if (collision.GetComponent<Collider>().CompareTag("Player"))
             state = EnemyState.Attacking;
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        Debug.Log("RETREAT");
         if (collision.GetComponent<Collider>().CompareTag("Player"))
             state = EnemyState.FinishedRoute;
     }

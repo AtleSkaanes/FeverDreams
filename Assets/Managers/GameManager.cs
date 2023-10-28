@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     new void Awake()
     {
         base.Awake();
+        Cursor.visible = false;
     }
 
     public void RestartLvl()

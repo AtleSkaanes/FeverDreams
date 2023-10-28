@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController characterController;
 
+    private bool isMoving = false;
+
 
     void Start()
     {
@@ -32,48 +34,43 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        CheckSprint();
+        if (!InputManager.Instance.isSprinting || !isMoving)
+            IncreaseStamina();
+
+        isMoving = false;
+
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, virtualCamera.transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     void MovePlayer(Vector2 movement)
     {
-        DecreaseStamina();
-        //Vector3 move = new Vector3(movement.x, 0, movement.y);
+        isMoving = true;
+
+        if (InputManager.Instance.isSprinting && currentStamina > Mathf.Epsilon)
+        {
+            DecreaseStamina();
+            currentSpeed = sprintSpeed;
+        }
+        else
+            currentSpeed = movementSpeed;
+
+        // Vector3 move = new Vector3(movement.x, 0, movement.y);
         Vector3 move = transform.forward * movement.y + transform.right * movement.x;
-        characterController.SimpleMove(move * currentSpeed * Time.deltaTime);
+        characterController.SimpleMove(move * currentSpeed);
 
         if (InputManager.Instance.isSprinting)
             GameManager.Instance.OnNoise.Invoke(transform.position);
     }
 
-    void CheckSprint()
-    {
-        if (InputManager.Instance.isSprinting && currentStamina > Mathf.Epsilon)
-        {
-            currentSpeed = sprintSpeed;
-            transform.eulerAngles = new Vector3(7.5f, transform.eulerAngles.y, transform.eulerAngles.z);
-        }
-        else
-        {
-            currentSpeed = movementSpeed;
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
-            IncreaseStamina();
-        }
-    }
-
     void IncreaseStamina()
     {
-        if (InputManager.Instance.isSprinting)
-            return;
-
         currentStamina += Time.deltaTime;
-        currentStamina = Mathf.Clamp(currentStamina, 0, staminaSec);
+        currentStamina = Mathf.Min(currentStamina, staminaSec);
     }
 
     void DecreaseStamina()
     {
         currentStamina -= Time.deltaTime;
-        currentStamina = Mathf.Clamp(currentStamina, 0, staminaSec);
+        currentStamina = Mathf.Max(currentStamina, 0);
     }
 }

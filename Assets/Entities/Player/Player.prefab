@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3495746432001415394}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,13 +61,13 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6220011186750565190}
   - {fileID: 7656258586360566057}
   - {fileID: 4961135751103757396}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &2410287005263147058
 CharacterController:
@@ -92,7 +92,7 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.001
+  m_SkinWidth: 0.1
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8407346377533082564
@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaSec: 10
-  movementSpeed: 75
-  sprintSpeed: 150
+  movementSpeed: 5000
+  sprintSpeed: 10000
   virtualCamera: {fileID: 0}
 --- !u!114 &4965419945500068867
 MonoBehaviour:
@@ -124,6 +124,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 4961135751103757396}
+  KeysCollected: 0
+  KeysRequired: 2
+  keysCollectedText: {fileID: 0}
+  escapeText: {fileID: 0}
+  endScreen: {fileID: 0}
 --- !u!136 &3495746432001415394
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -195,7 +200,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4319064912556403797}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

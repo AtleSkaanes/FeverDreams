@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using UnityEditor.EditorTools;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -63,6 +63,7 @@ public class SanityManager : Singleton<SanityManager>
         {
             Debug.Log("you die :)");
             dieScreen.SetActive(true);
+            Cursor.visible = true;
             Time.timeScale = 0;
         }
     }

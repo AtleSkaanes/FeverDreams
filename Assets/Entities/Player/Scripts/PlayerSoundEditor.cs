@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(PlayerSoundTest))]
 public class PlayerSoundEditor : Editor
 {
@@ -20,3 +21,4 @@ public class PlayerSoundEditor : Editor
     }
 
 }
+#endif
